@@ -40,7 +40,6 @@ totals <- c(
   sum(data$Deaths, na.rm=TRUE)
 )
 
-# IMPORTANT: prevent Inf
 totals[!is.finite(totals)] <- 0
 
 labels <- c("Active", "Recovered", "Deaths")
@@ -55,55 +54,5 @@ barplot(
   top10$Confirmed,
   names.arg = top10[[country_col]],
   las = 2, col = "skyblue",
-  main = "Top 10 Countries by Confirmed Cases",
-  ylab = "Confirmed Cases"
-)
-
-### ---------- PLOT 2 ----------
-pie(
-  totals,
-  labels = labels,
-  col = c("orange", "green", "red"),
-  main = "Global Distribution: Active / Recovered / Deaths"
-)
-
-### ---------- PLOT 3 ----------
-plot(
-  data$Confirmed, data$Deaths,
-  pch = 16, col = "purple",
-  xlab = "Confirmed Cases",
-  ylab = "Deaths",
-  main = "Confirmed vs Deaths"
-)
-
-### ---------- PLOT 4 ----------
-hist(
-  data$RecoveryRate,
-  col = "lightgreen",
-  main = "Distribution of Recovery Rates",
-  xlab = "Recovery Rate (%)"
-)
-
-### ---------- PLOT 5 ----------
-boxplot(
-  data$Active,
-  col = "orange",
-  main = "Distribution of Active Cases",
-  ylab = "Active Cases"
-)
-
-### ---------- PLOT 6 ----------
-top5d <- data[order(-data$Deaths), ][1:5, ]
-
-plot(
-  top5d$Deaths, type = "o", pch = 16, col = "red",
-  xaxt = "n",
-  main = "Top 5 Countries by Deaths",
-  xlab = "Country",
-  ylab = "Deaths"
-)
-
-axis(1, at = 1:5, labels = top5d[[country_col]])
-
-dev.off()
-
+  main =
+    
