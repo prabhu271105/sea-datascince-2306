@@ -106,3 +106,4 @@ plot(
 axis(1, at = 1:5, labels = top5d[[country_col]])
 
 dev.off()
+
